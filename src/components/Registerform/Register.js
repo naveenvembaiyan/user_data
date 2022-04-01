@@ -6,19 +6,23 @@ import './Register.css'
 
 const Register = () => {
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [phnumber, setNumber] = useState();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phnumber, setNumber] = useState('');
+  const [data, setData] = useState([]);
 
   function Submit (e){
     e.preventDefault();
-    console.log(name, email, phnumber);
-    alert("Your details are submitted");
-    
-
-
-
+    setData([...data, { name: name, email: email, phone: phnumber }]);
+    setName('');
+    setEmail('');
+    setNumber('');
+  
   }
+
+ 
+ 
+
 
 
  
@@ -48,15 +52,15 @@ return (
             <form action="" className='mt-3' onSubmit={(e)=>Submit(e)}>
               <div className="form-group mb-3">
                 <label htmlFor="">Name</label>
-                <input type="text" className="form-control " placeholder="Enter Name" value={name} onChange={(e)=> setName(e.target.value)}   />
+                <input required type="text" className="form-control " placeholder="Enter Name" value={name} onChange={(e)=> setName(e.target.value)} />
               </div>
               <div className="form-group mb-3">
                 <label htmlFor="">Email</label>
-                <input type="email" className="form-control" placeholder="Enter Email" value={email} onChange={(e)=> setEmail(e.target.value)} />
+                <input required type="email" className="form-control" placeholder="Enter Email" value={email} onChange={(e)=> setEmail(e.target.value)}  />
               </div>
               <div className="form-group mb-3">
                 <label htmlFor="">Phone No</label>
-                <input type="text" className="form-control" placeholder="Enter Phone No" value={phnumber} onChange={(e)=> setNumber(e.target.value)} />
+                <input required type="text" className="form-control" placeholder="Enter Phone No" value={phnumber} onChange={(e)=> setNumber(e.target.value)} />
               </div>
               <div >
               <button className='btn  btn-block ' > Save Data</button>
@@ -78,43 +82,19 @@ return (
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                </tr>
-              </tbody>
+
+              {data &&
+                      data.map((singledata, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td>{singledata.name}</td>
+                            <td>{singledata.email}</td>
+                            <td>{singledata.phone}</td>
+                          </tr>
+                        );
+                      })}
+                </tbody>      
 
         </table>
           </div>
@@ -130,4 +110,4 @@ return (
 )
 }
 
-export default Register
+export default Register;
