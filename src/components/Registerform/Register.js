@@ -59,7 +59,7 @@ return (
                 <input type="text" className="form-control" placeholder="Enter Phone No" value={phnumber} onChange={(e)=> setNumber(e.target.value)} />
               </div>
               <div >
-              <button className='btn  btn-block ' > save Data</button>
+              <button className='btn  btn-block ' > Save Data</button>
               </div>
             </form>
           </div>
