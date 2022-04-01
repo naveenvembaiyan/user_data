@@ -1,40 +1,27 @@
 import React, { useState } from 'react'
 import './Register.css'
 
-
-
-
 const Register = () => {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phnumber, setNumber] = useState('');
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+     username: 'ramkumar', 
+      mailid: 'ram@gmail',
+      phonenumber: '98878686869'
+    }
+  ]);
 
   function Submit (e){
     e.preventDefault();
-    setData([...data, { name: name, email: email, phone: phnumber }]);
+    setData([...data, { username: name, mailid: email, phonenumber: phnumber }]);
     setName('');
     setEmail('');
     setNumber('');
   
   }
-
- 
- 
-
-
-
- 
-  
-  
- 
-     
-  
-
-
-
-
 
 return (
 <>
@@ -88,14 +75,15 @@ return (
                         return (
                           <tr key={index}>
                             <td>{index + 1}</td>
-                            <td>{singledata.name}</td>
-                            <td>{singledata.email}</td>
-                            <td>{singledata.phone}</td>
+                            <td>{singledata.username}</td>
+                            <td>{singledata.mailid}</td>
+                            <td>{singledata.phonenumber}</td>
                           </tr>
                         );
                       })}
                 </tbody>      
 
+              
         </table>
           </div>
         </div>
